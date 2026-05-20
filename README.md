@@ -53,14 +53,14 @@ Press `Escape` or close the window to quit.
 **Build and serve:**
 
 ```bash
-just run-wasm    # Builds docs/main.wasm and serves docs/ on http://localhost:8080
-just build-wasm  # Build only (outputs docs/main.wasm)
-just serve       # Serve docs/ without rebuilding
+just run-wasm    # Builds site/main.wasm and serves site/ on http://localhost:8080
+just build-wasm  # Build only (outputs site/main.wasm)
+just serve       # Serve site/ without rebuilding
 ```
 
-`docs/index.html` and `docs/wasm_exec.js` are committed, so the `docs/` folder is a self-contained static site after `just build-wasm` - ready to host as-is on GitHub Pages or any static file server.
+`site/index.html` and `site/wasm_exec.js` are committed, so the `site/` folder is a self-contained static site after `just build-wasm` - ready to host as-is on GitHub Pages or any static file server.
 
-A GitHub Pages workflow at `.github/workflows/pages.yml` builds `docs/main.wasm` + refreshes `docs/wasm_exec.js` and pushes the result to the `gh-pages` branch on every push to `main`. To enable hosting, set **Settings → Pages → Source** to `Deploy from a branch` and pick the `gh-pages` branch (root).
+A GitHub Pages workflow at `.github/workflows/pages.yml` builds `site/main.wasm` + refreshes `site/wasm_exec.js` and pushes the result to the `gh-pages` branch on every push to `main`. To enable hosting, set **Settings → Pages → Source** to `Deploy from a branch` and pick the `gh-pages` branch (root).
 
 ## Development
 
@@ -97,10 +97,14 @@ wgpu-example-go/
 │   ├── uniform.go            # uniformBuffer/binding types + constructors
 │   ├── uniform_js.go         # //go:build js     - per-frame CreateBufferInit (dodges detached ArrayBuffer)
 │   └── uniform_native.go     # //go:build !js    - queue.WriteBuffer upload
-├── docs/                     # static site for the wasm build
+├── site/                     # static site for the wasm build (Pages deploy source)
 │   ├── index.html
 │   ├── wasm_exec.js
 │   └── main.wasm             # output of `just build-wasm`
+├── docs/                     # project documentation
+│   ├── ARCHITECTURE.md
+│   ├── RENDERER.md
+│   └── screenshot.png
 ├── go.mod
 ├── go.sum
 └── justfile

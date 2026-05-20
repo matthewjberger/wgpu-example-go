@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	dir := flag.String("dir", "docs", "directory to serve")
+	dir := flag.String("dir", "site", "directory to serve")
 	addr := flag.String("addr", ":8080", "listen address")
 	flag.Parse()
 

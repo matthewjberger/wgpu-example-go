@@ -12,15 +12,15 @@ run:
 build:
     go build ./cmd/wgpu-example-go
 
-# Builds the wasm binary into docs/
+# Builds the wasm binary into site/
 build-wasm:
-    $env:GOOS = "js"; $env:GOARCH = "wasm"; go build -o docs/main.wasm ./cmd/wgpu-example-go
+    $env:GOOS = "js"; $env:GOARCH = "wasm"; go build -o site/main.wasm ./cmd/wgpu-example-go
 
-# Serves docs/ on http://localhost:8080
+# Serves site/ on http://localhost:8080
 serve:
     go run ./cmd/serve
 
-# Builds the wasm binary and serves docs/
+# Builds the wasm binary and serves site/
 run-wasm: build-wasm serve
 
 # Runs go vet and fails on unformatted files

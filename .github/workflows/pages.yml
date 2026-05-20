@@ -23,11 +23,11 @@ jobs:
           GOOS: js
           GOARCH: wasm
         run: |
-          go build -o docs/main.wasm ./cmd/wgpu-example-go
-          cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" docs/wasm_exec.js
+          go build -o site/main.wasm ./cmd/wgpu-example-go
+          cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" site/wasm_exec.js
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: docs
+          folder: site
           single-commit: true
