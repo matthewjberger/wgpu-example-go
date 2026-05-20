@@ -1,0 +1,36 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+/bin/
+
+# Go test / coverage / profiling artifacts
+*.test
+*.out
+*.prof
+coverage.txt
+coverage.html
+
+# Go workspace and vendor
+go.work
+go.work.sum
+vendor/
+
+# Debugger
+__debug_bin*
+debug
+debug.test
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
