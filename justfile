@@ -12,9 +12,15 @@ run:
 build:
     go build ./cmd/wgpu-example-go
 
-# Builds the wasm binary into site/
+# Builds the wasm binary into site/ (Windows)
+[windows]
 build-wasm:
     $env:GOOS = "js"; $env:GOARCH = "wasm"; go build -o site/main.wasm ./cmd/wgpu-example-go
+
+# Builds the wasm binary into site/ (Unix)
+[unix]
+build-wasm:
+    GOOS=js GOARCH=wasm go build -o site/main.wasm ./cmd/wgpu-example-go
 
 # Serves site/ on http://localhost:8080
 serve:
@@ -23,10 +29,17 @@ serve:
 # Builds the wasm binary and serves site/
 run-wasm: build-wasm serve
 
-# Runs go vet and fails on unformatted files
+# Runs go vet and fails on unformatted files (Windows)
+[windows]
 check:
     go vet ./...
     $unformatted = (gofmt -l . | Out-String).Trim(); if ($unformatted) { Write-Host $unformatted; exit 1 }
+
+# Runs go vet and fails on unformatted files (Unix)
+[unix]
+check:
+    go vet ./...
+    unformatted=$(gofmt -l .); if [ -n "$unformatted" ]; then echo "$unformatted"; exit 1; fi
 
 # Formats all Go files
 format:
@@ -58,9 +71,15 @@ audit: check tidy-check outdated test
 doc:
     go doc -all ./render
 
-# Removes the desktop binary
+# Removes the desktop binary (Windows)
+[windows]
 clean:
     Remove-Item -Force -ErrorAction SilentlyContinue wgpu-example-go.exe
+
+# Removes the desktop binary (Unix)
+[unix]
+clean:
+    rm -f wgpu-example-go
 
 # Displays Go tool version
 @versions:
