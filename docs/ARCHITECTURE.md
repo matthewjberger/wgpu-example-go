@@ -2,7 +2,7 @@
 
 This is the wgpu-example-go project from the outside in. What the directories hold, where the binary/library line sits, how the desktop and wasm builds differ, and what a frame looks like when the whole thing runs.
 
-The whole thing is a spinning RGB triangle on desktop (GLFW) and in the browser (canvas + WebGPU). No GUI, no XR, no mobile. If you want the file-by-file walkthrough of the renderer package instead, see [`RENDERER.md`](./RENDERER.md).
+The whole thing is a spinning RGB triangle on desktop (GLFW) and in the browser (canvas + WebGPU). No GUI, no XR, no mobile. If you want the file-by-file walkthrough of the renderer package instead, see [`RENDERER.md`](./RENDERER.md). For the goals, requirements, and the rationale behind each design decision, see [`DESIGN.md`](./DESIGN.md).
 
 ## The module
 

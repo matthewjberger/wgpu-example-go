@@ -2,7 +2,7 @@
 
 This is a file-by-file walk through `package render`. What each file owns, why it exists, and how the pieces stack up into the `Engine` type that `cmd/wgpu-example-go/` drives. All paths are relative to `render/`.
 
-For the project-level view (binaries, build flow, CI), see [`ARCHITECTURE.md`](./ARCHITECTURE.md).
+For the project-level view (binaries, build flow, CI), see [`ARCHITECTURE.md`](./ARCHITECTURE.md). For the design rationale behind these choices (goals, requirements, alternatives considered), see [`DESIGN.md`](./DESIGN.md).
 
 ## The public surface
 
